@@ -2,6 +2,7 @@
 
 using System;
 using CB.Core;
+using CB.Factory;
 using CB.InMemory;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -23,7 +24,7 @@ namespace CB.Examples
         {
             var services = new ServiceCollection();
 
-            services.AddBucket<UserPreferenceCacheBucket>()
+            services.AddCacheBucket()
                 .AddStorage<InMemoryCacheStorage>();
 
 

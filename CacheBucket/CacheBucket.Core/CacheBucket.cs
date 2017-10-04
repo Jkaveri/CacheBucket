@@ -2,7 +2,6 @@
 
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Linq;
 using JetBrains.Annotations;
 
 #endregion
@@ -21,8 +20,6 @@ namespace CB.Core
         {
             Name = name;
             Storage = cacheStorage;
-            Parent = GetParentBucket(name, cacheStorage, out var lastName);
-            Name = lastName;
         }
 
         public int ChildCount => _innerBuckets.Count;
@@ -91,27 +88,6 @@ namespace CB.Core
             names.Reverse();
 
             return CreateBucketName(names);
-        }
-
-        private CacheBucket GetParentBucket(string name, ICacheStorage storage, out string lastName)
-        {
-            var bucketNames = BucketNameHelper.ExtractBucketNames(name);
-            lastName = bucketNames.Last();
-            if (bucketNames.Length <= 1)
-            {
-                return null;
-            }
-            CacheBucket parent = null;
-            foreach (var bucketName in bucketNames.Skip(0).Take(bucketNames.Length - 1).Reverse())
-            {
-                var bucket = new CacheBucket(bucketName, storage)
-                {
-                    Parent = parent
-                };
-                parent = bucket;
-            }
-
-            return parent;
         }
     }
 }

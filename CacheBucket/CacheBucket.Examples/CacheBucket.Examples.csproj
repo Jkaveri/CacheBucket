@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CacheBucket.Core\CacheBucket.Core.csproj" />
+    <ProjectReference Include="..\CacheBucket.Factory\CacheBucket.Factory.csproj" />
     <ProjectReference Include="..\CacheBucket.InMemory\CacheBucket.InMemory.csproj" />
   </ItemGroup>
 
