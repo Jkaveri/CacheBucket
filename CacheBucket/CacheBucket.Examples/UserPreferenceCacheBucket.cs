@@ -1,11 +1,11 @@
 ﻿using CB.Core;
-using JetBrains.Annotations;
+using CB.InMemory;
 
 namespace CB.Examples
 {
     public class UserPreferenceCacheBucket:CacheBucket
     {
-        public UserPreferenceCacheBucket() : base("UserPreference")
+        public UserPreferenceCacheBucket(InMemoryCacheStorage cacheStorage) : base("UserPreference", cacheStorage)
         {
         }
     }

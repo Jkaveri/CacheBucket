@@ -1,6 +1,5 @@
 ﻿#region
 
-using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,31 +14,15 @@ namespace CB.Core
         private readonly ConcurrentDictionary<string, CacheBucket> _innerBuckets =
             new ConcurrentDictionary<string, CacheBucket>();
 
-        private readonly ICacheStorage _cacheStorage;
         private string _navigationName;
         private CacheBucket _parent;
 
-
-        public CacheBucket([NotNull] string name)
-        {
-            var rootBucketName = GetRootBucketName(name);
-            var storage = CacheStorageManager.Instance.Get(rootBucketName);
-
-            if (storage == null)
-            {
-                throw new InvalidOperationException($"You forgot register cache storage for cache bucket {name}.");
-            }
-
-            _cacheStorage = storage;
-            Parent = GetParentBucket(name, storage, out var lastName);
-            Name = lastName;
-        }
-
-
-        protected CacheBucket([NotNull] string name, [NotNull] ICacheStorage cacheStorage)
+        public CacheBucket([NotNull] string name, ICacheStorage cacheStorage)
         {
             Name = name;
-            _cacheStorage = cacheStorage;
+            Storage = cacheStorage;
+            Parent = GetParentBucket(name, cacheStorage, out var lastName);
+            Name = lastName;
         }
 
         public int ChildCount => _innerBuckets.Count;
@@ -62,11 +45,13 @@ namespace CB.Core
             }
         }
 
+        internal ICacheStorage Storage { get; set; }
+
         public string GetValue(string key)
         {
             key = CreateBucketName(new[] {NavigationName, key});
 
-            return _cacheStorage.Get(key);
+            return Storage.Get(key);
         }
 
         public CacheBucket In(string name)
@@ -76,7 +61,7 @@ namespace CB.Core
                 return bucket;
             }
 
-            bucket = new CacheBucket(name, _cacheStorage) {Parent = this};
+            bucket = new CacheBucket(name, Storage) {Parent = this};
             _innerBuckets.TryAdd(name, bucket);
             return bucket;
         }
@@ -85,7 +70,7 @@ namespace CB.Core
         {
             key = CreateBucketName(new[] {NavigationName, key});
 
-            _cacheStorage.Set(key, value);
+            Storage.Set(key, value);
         }
 
         protected virtual string CreateBucketName(IEnumerable<string> names)
@@ -127,12 +112,6 @@ namespace CB.Core
             }
 
             return parent;
-        }
-
-        private string GetRootBucketName([NotNull] string name)
-        {
-            var bucketNames = BucketNameHelper.ExtractBucketNames(name);
-            return bucketNames[0];
         }
     }
 }

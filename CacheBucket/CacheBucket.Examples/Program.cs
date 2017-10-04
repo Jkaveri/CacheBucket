@@ -9,25 +9,30 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace CB.Examples
 {
+    public class A
+    {
+    }
+
+    public class B
+    {
+    }
+
     internal class Program
     {
         private static void Main(string[] args)
         {
             var services = new ServiceCollection();
-            services.AddSingleton<InMemoryCacheStorage>();
+
+            services.AddBucket<UserPreferenceCacheBucket>()
+                .AddStorage<InMemoryCacheStorage>();
+
+
             var sp = services.BuildServiceProvider();
-           
-            CacheBucketManager.With(() => sp.GetService<InMemoryCacheStorage>())
-                .Register("UserPreference");
 
+            var bucket = sp.GetService<UserPreferenceCacheBucket>();
 
-            const string userId = "123";
-            var cacheBucket = new UserPreferenceCacheBucket();
-
-            var userBucket = cacheBucket.In(userId);
-            userBucket.SetValue("henry", "value");
-
-            Console.WriteLine($"Hello World! {userBucket.GetValue("henry")}");
+            bucket.SetValue("H", "O");
+            Console.WriteLine(bucket.GetValue("H"));
             Console.Read();
         }
     }

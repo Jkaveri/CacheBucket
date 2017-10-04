@@ -14,25 +14,18 @@ namespace CB.Tests
         private const string BUCKET_NAME_1 = "UserPreference";
         private const string BUCKET_NAME_2 = "TestBucket2";
 
-        private void SetupBuckets()
-        {
-            CacheBucketManager.With(() => new InMemoryCacheStorage())
-                .Register(BUCKET_NAME_1)
-                .Register(BUCKET_NAME_2);
-        }
-
         [Fact]
         public void Should_consitent_value_between_2_instances()
         {
             // Arrange
-            SetupBuckets();
+            var storage = new InMemoryCacheStorage();
             var testKey = "A";
             var testValue = "B";
             var testValue2 = "C";
 
             // Actions
-            var bucket = new CacheBucket(BUCKET_NAME_1);
-            var bucket2 = new CacheBucket(BUCKET_NAME_1);
+            var bucket = new CacheBucket(BUCKET_NAME_1, storage);
+            var bucket2 = new CacheBucket(BUCKET_NAME_1, storage);
 
             bucket.SetValue(testKey, testValue);
             bucket2.SetValue(testKey, testValue2);
@@ -47,12 +40,12 @@ namespace CB.Tests
         public void should_create_bucket_success()
         {
             // Arrange
-            SetupBuckets();
+            var storage = new InMemoryCacheStorage();
             var testKey = "A";
             var testValue = "B";
 
             // Actions
-            var bucket = new CacheBucket(BUCKET_NAME_1);
+            var bucket = new CacheBucket(BUCKET_NAME_1, storage);
             bucket.SetValue(testKey, testValue);
 
             // Asserts
@@ -64,16 +57,16 @@ namespace CB.Tests
         public void should_return_correct_value_when_quick_access()
         {
             // Arrange
-            SetupBuckets();
+            var storage = new InMemoryCacheStorage();
             var testKey = "A";
             var childContainer = "1";
             var testValue2 = "C";
 
             // Actions
-            var bucket = new CacheBucket(BUCKET_NAME_1);
+            var bucket = new CacheBucket(BUCKET_NAME_1, storage);
             bucket.In(childContainer).SetValue(testKey, testValue2);
 
-            var childBucket = new CacheBucket(new[] {BUCKET_NAME_1, childContainer}.ToBucketName());
+            var childBucket = new CacheBucket(new[] {BUCKET_NAME_1, childContainer}.ToBucketName(), storage);
 
 
             // Asserts
@@ -85,14 +78,14 @@ namespace CB.Tests
         public void should_return_correct_values()
         {
             // Arrange
-            SetupBuckets();
+            var storage = new InMemoryCacheStorage();
             var testKey = "A";
             var childContainer = "1";
             var testValue = "B";
             var testValue2 = "C";
 
             // Actions
-            var bucket = new CacheBucket(BUCKET_NAME_1);
+            var bucket = new CacheBucket(BUCKET_NAME_1, storage);
 
             bucket.SetValue(testKey, testValue);
             bucket.In(childContainer).SetValue(testKey, testValue2);
@@ -107,14 +100,14 @@ namespace CB.Tests
         public void should_return_different_value_from_different_buckets()
         {
             // Arrange
-            SetupBuckets();
+            var storage = new InMemoryCacheStorage();
             var testKey = "A";
             var testValue = "B";
             var testValue2 = "C";
 
             // Actions
-            var bucket = new CacheBucket(BUCKET_NAME_1);
-            var bucket2 = new CacheBucket(BUCKET_NAME_2);
+            var bucket = new CacheBucket(BUCKET_NAME_1, storage);
+            var bucket2 = new CacheBucket(BUCKET_NAME_2, storage);
 
             bucket.SetValue(testKey, testValue);
             bucket2.SetValue(testKey, testValue2);
@@ -129,13 +122,13 @@ namespace CB.Tests
         public void should_return_value_in_other_class()
         {
             // Arrange
-            SetupBuckets();
+            var storage = new InMemoryCacheStorage();
             var testKey = "A";
             var testValue = "B";
 
             // Actions
-            var bucket = new CacheBucket(BUCKET_NAME_1);
-            var bucket2 = new CacheBucket(BUCKET_NAME_1);
+            var bucket = new CacheBucket(BUCKET_NAME_1, storage);
+            var bucket2 = new CacheBucket(BUCKET_NAME_1, storage);
             bucket.SetValue(testKey, testValue);
 
             // Asserts
