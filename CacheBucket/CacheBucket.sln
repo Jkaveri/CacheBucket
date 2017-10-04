@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CacheBucket.Tests", "CacheB
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CacheBucket.InMemory", "CacheBucket.InMemory\CacheBucket.InMemory.csproj", "{4BE86B94-D7ED-490E-B04A-D25BA43105E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CacheBucket.Examples", "CacheBucket.Examples\CacheBucket.Examples.csproj", "{63D32420-1077-4781-BB72-962FF51B6ED8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CacheBucket.Examples", "CacheBucket.Examples\CacheBucket.Examples.csproj", "{63D32420-1077-4781-BB72-962FF51B6ED8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CacheBucket.Factory", "CacheBucket.Factory\CacheBucket.Factory.csproj", "{8C2A64FC-BEE3-4AE5-9A0D-078EE63045A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{63D32420-1077-4781-BB72-962FF51B6ED8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63D32420-1077-4781-BB72-962FF51B6ED8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63D32420-1077-4781-BB72-962FF51B6ED8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C2A64FC-BEE3-4AE5-9A0D-078EE63045A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C2A64FC-BEE3-4AE5-9A0D-078EE63045A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C2A64FC-BEE3-4AE5-9A0D-078EE63045A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C2A64FC-BEE3-4AE5-9A0D-078EE63045A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
