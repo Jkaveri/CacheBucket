@@ -1,9 +1,19 @@
+image:
+- Visual Studio 2017
 version: '1.0.{build}'
+clone_depth: 1
+pull_requests:
+  do_not_increment_build_number: true
+nuget:  
+  disable_publish_on_pr: true
 dotnet_csproj:
   patch: true
   file: '.\CacheBucket\**\*.csproj'
   version: '{version}'
   package_version: '{version}'
+artifacts:  
+- path: .\artifacts\**\*.nupkg
+  name: NuGet
 deploy:
   provider: NuGet
   api_key:
