@@ -16,6 +16,7 @@ public class Client {
 
 	private readonly UserPreferenceCacheBucket _userPreferenceCache;
 
+	// This argument will be injected by DI container
 	public Client(UserPreferenceCacheBucket userPreferenceCache) {
 		_userPreferenceCache = userPreferenceCache;
 	}
