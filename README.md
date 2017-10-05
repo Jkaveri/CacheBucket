@@ -2,6 +2,8 @@
 
 A simple caching pattern.
 
+[![Build Status](https://travis-ci.org/Jkaveri/CacheBucket.svg?branch=develop)](https://travis-ci.org/Jkaveri/CacheBucket)
+
 ## Usage
 
 ```csharp
