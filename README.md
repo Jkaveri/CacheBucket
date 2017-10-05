@@ -2,6 +2,11 @@
 
 A simple caching pattern.
 
+|Branches|Build Status|
+|--------|------------|
+|Develop |[![Build Status](https://travis-ci.org/Jkaveri/CacheBucket.svg?branch=develop)](https://travis-ci.org/Jkaveri/CacheBucket)|
+|Master  |[![Build Status](https://travis-ci.org/Jkaveri/CacheBucket.svg?branch=master)](https://travis-ci.org/Jkaveri/CacheBucket) |
+
 ## Usage
 
 ```csharp
