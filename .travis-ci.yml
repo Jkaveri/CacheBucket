@@ -1,0 +1,9 @@
+﻿language: csharp
+solution: ./CacheBucket/CacheBucket.sln
+mono: none
+dotnet: 2.0.0
+dist: trusty
+script:
+  - dotnet restore ./CacheBucket/CacheBucket.sln
+  - dotnet build ./CacheBucket/CacheBucket.sln
+  - dotnet test ./CacheBucket/CacheBucket.Tests
