@@ -5,13 +5,6 @@ image: Visual Studio 2017 Preview
 configuration: Release
 platform: Any CPU
 clone_depth: 1
-dotnet_csproj:
-  patch: true
-  file: '**/**/**/*.csproj'
-  version: '{version}'
-  package_version: '{version}'
-environment:
-  VERSION_SUFFIX: '{version}'
 build_script:
 - ps: >-
     dotnet restore ./CacheBucket/CacheBucket.sln
