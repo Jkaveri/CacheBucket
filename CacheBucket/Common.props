@@ -2,13 +2,17 @@
   <PropertyGroup>
     <Authors>Henry Nguyen</Authors>
     <Version>1.0.0</Version>
+    <Version Condition="'$(APPVEYOR)' == 'true' And '$(APPVEYOR_BUILD_VERSION)' != ''">$(APPVEYOR_BUILD_VERSION)</Version>
     <PackageVersion>1.0.0</PackageVersion>
+    <PackageVersion Condition="'$(APPVEYOR)' == 'true' And '$(APPVEYOR_BUILD_VERSION)' != ''">$(APPVEYOR_BUILD_VERSION)</PackageVersion>
     <PackageProjectUrl>https://github.com/Jkaveri/CacheBucket</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Jkaveri/CacheBucket</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>caching, bucket, cache-bucket, redis, memory-cache</PackageTags>
     <AssemblyVersion>1.0.0</AssemblyVersion>
+    <AssemblyVersion Condition="'$(APPVEYOR)' == 'true' And '$(APPVEYOR_BUILD_VERSION)' != ''">$(APPVEYOR_BUILD_VERSION)</AssemblyVersion>
     <AssemblyFileVersion>1.0.0</AssemblyFileVersion>
-    <VersionSuffix Condition="'$(VersionSuffix)' != '' And '$(BuildNumber)' != ''">$(VersionSuffix)</VersionSuffix>
+    <AssemblyFileVersion Condition="'$(APPVEYOR)' == 'true' And '$(APPVEYOR_BUILD_VERSION)' != ''">$(APPVEYOR_BUILD_VERSION)</AssemblyFileVersion>
+    <VersionSuffix Condition="'$(VersionSuffix)' != ''">$(VersionSuffix)</VersionSuffix>
   </PropertyGroup>
 </Project>
