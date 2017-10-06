@@ -6,4 +6,4 @@ dist: trusty
 script:
   - dotnet restore ./CacheBucket/CacheBucket.sln
   - dotnet build ./CacheBucket/CacheBucket.sln
-  - dotnet test ./CacheBucket/CacheBucket.Tests
+  - dotnet test ./CacheBucket/test/CacheBucket.Tests
