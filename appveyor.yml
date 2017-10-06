@@ -16,11 +16,12 @@ build_script:
 
     dotnet build ./CacheBucket/CacheBucket.sln
 
-    dotnet pack ./CacheBucket/CacheBucket.sln
-test:
-  assemblies:
-    only:
-    - CacheBucket.Tests
+    dotnet pack ./CacheBucket/CacheBucket.sln --output ./artifacts
+test_script:
+- ps: dotnet test ./CacheBucket/CacheBucket.Tests --no-build --no-restore
+artifacts:
+- path: ./artifacts
+  name: Nuget
 deploy:
 - provider: NuGet
   api_key:
