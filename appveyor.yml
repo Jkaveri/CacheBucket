@@ -10,15 +10,17 @@ dotnet_csproj:
   file: '**\**\*.csproj'
   version: '{version}'
   package_version: '{version}'
+environment:
+  VERSION_SUFFIX: '{build}'
 build_script:
 - ps: >-
     dotnet restore ./CacheBucket/CacheBucket.sln
 
-    dotnet build ./CacheBucket/CacheBucket.sln
+    dotnet build ./CacheBucket/CacheBucket.sln --version-suffix $env:VERSION_SUFFIX
 
-    dotnet pack ./CacheBucket/CacheBucket.sln --output ./artifacts
+    dotnet pack ./CacheBucket/CacheBucket.sln --version-suffix $env:VERSION_SUFFIX --output ./artifacts
 test_script:
-- ps: dotnet test ./CacheBucket/CacheBucket.Tests --no-build --no-restore
+- ps: dotnet test ./CacheBucket/CacheBucket.Tests
 artifacts:
 - path: ./artifacts
   name: Nuget
