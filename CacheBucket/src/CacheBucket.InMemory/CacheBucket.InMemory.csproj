@@ -1,14 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
+  <Import Project="../../Common.props" />
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace>CB.Factory</RootNamespace>
+    <RootNamespace>CB.InMemory</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CacheBucket.Core\CacheBucket.Core.csproj" />
-    <PackageReference Include="JetBrains.Annotations" Version="11.0.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.0.0" />
   </ItemGroup>
 
 </Project>

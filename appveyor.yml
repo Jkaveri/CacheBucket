@@ -7,11 +7,11 @@ platform: Any CPU
 clone_depth: 1
 dotnet_csproj:
   patch: true
-  file: '**\**\*.csproj'
+  file: '**/**/**/*.csproj'
   version: '{version}'
   package_version: '{version}'
 environment:
-  VERSION_SUFFIX: '{build}'
+  VERSION_SUFFIX: '{version}'
 build_script:
 - ps: >-
     dotnet restore ./CacheBucket/CacheBucket.sln
@@ -20,14 +20,8 @@ build_script:
 
     dotnet pack ./CacheBucket/CacheBucket.sln --output ./artifacts
 test_script:
-- ps: dotnet test ./CacheBucket/CacheBucket.Tests
+- ps: dotnet test ./CacheBucket/test/CacheBucket.Tests
 artifacts:
-- path: '**/**/artifacts/*.nupkg'
+- path: '**/src/**/artifacts/*.nupkg'
   name: Nuget
-deploy:
-- provider: NuGet
-  api_key:
-    secure: nA9huQI+uilaKbaO0NQyUlAvsYIMVSEfpJoluxL2cd73zhv/husrMl7vVobhzCdp
-  skip_symbols: false
-  on:
-    branch: master
+deploy: off

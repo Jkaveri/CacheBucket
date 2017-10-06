@@ -1,5 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
+  <Import Project="../../Common.props" />
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
 
@@ -17,9 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CacheBucket.Core\CacheBucket.Core.csproj" />
-    <ProjectReference Include="..\CacheBucket.Factory\CacheBucket.Factory.csproj" />
-    <ProjectReference Include="..\CacheBucket.InMemory\CacheBucket.InMemory.csproj" />
+    <ProjectReference Include="..\..\src\CacheBucket.Core\CacheBucket.Core.csproj" />
+    <ProjectReference Include="..\..\src\CacheBucket.Factory\CacheBucket.Factory.csproj" />
+    <ProjectReference Include="..\..\src\CacheBucket.InMemory\CacheBucket.InMemory.csproj" />
   </ItemGroup>
 
 </Project>
