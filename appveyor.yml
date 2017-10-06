@@ -16,13 +16,13 @@ build_script:
 - ps: >-
     dotnet restore ./CacheBucket/CacheBucket.sln
 
-    dotnet build ./CacheBucket/CacheBucket.sln --version-suffix $env:VERSION_SUFFIX
+    dotnet build ./CacheBucket/CacheBucket.sln
 
-    dotnet pack ./CacheBucket/CacheBucket.sln --version-suffix $env:VERSION_SUFFIX --output ./artifacts
+    dotnet pack ./CacheBucket/CacheBucket.sln --output ./artifacts
 test_script:
 - ps: dotnet test ./CacheBucket/CacheBucket.Tests
 artifacts:
-- path: ./artifacts
+- path: '**/**/artifacts/*.nupkg'
   name: Nuget
 deploy:
 - provider: NuGet
