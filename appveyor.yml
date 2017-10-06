@@ -10,11 +10,13 @@ dotnet_csproj:
   file: '**\**\*.csproj'
   version: '{version}'
   package_version: '{version}'
-before_build:
-- cmd: dotnet restore ./CacheBucket/CacheBucket.sln
-build:
-  publish_nuget: true
-  verbosity: minimal
+build_script:
+- ps: >-
+    dotnet restore ./CacheBucket/CacheBucket.sln
+
+    dotnet build ./CacheBucket/CacheBucket.sln
+
+    dotnet pack ./CacheBucket/CacheBucket.sln
 test:
   assemblies:
     only:
