@@ -5,7 +5,8 @@ A simple caching pattern.
 |Branches|Build Status|
 |--------|------------|
 |Develop |[![Build Status](https://travis-ci.org/Jkaveri/CacheBucket.svg?branch=develop)](https://travis-ci.org/Jkaveri/CacheBucket)|
-|Master  |[![Build Status](https://travis-ci.org/Jkaveri/CacheBucket.svg?branch=master)](https://travis-ci.org/Jkaveri/CacheBucket) |
+|Master  |[![Build Status](https://travis-ci.org/Jkaveri/CacheBucket.svg?branch=master)](https://travis-ci.org/Jkaveri/CacheBucket) [![Build status](https://ci.appveyor.com/api/projects/status/q8v2rykkky6tc6s9/branch/master?svg=true)](https://ci.appveyor.com/project/Jkaveri/cachebucket/branch/master)
+|
 
 ## Usage
 
@@ -29,7 +30,7 @@ public class Client {
 	public string Get(string userId, string key) {
 		var value = _userPreferenceCache.In(userId).GetValue(key);
 
-		if (string.IsNullOrEmpty(value)) {
+		if (!string.IsNullOrEmpty(value)) {
 			return value;
 		}
 
