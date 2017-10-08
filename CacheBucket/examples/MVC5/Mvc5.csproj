@@ -256,7 +256,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>64805</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://cachebucket.com:5000/</IISUrl>
+          <IISUrl>http://localhost:64805/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
