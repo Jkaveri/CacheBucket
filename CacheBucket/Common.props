@@ -2,11 +2,14 @@
   <PropertyGroup>
     <Authors>Henry Nguyen</Authors>
     <Version>1.0.0</Version>
+    <Description>Imagine, a bucket can contains values (water, sand, oil,...) and it can contains another Bucket. That is core concept of the CacheBucket pattern</Description>
     <Version Condition="'$(APPVEYOR)' == 'true' And '$(APPVEYOR_BUILD_VERSION)' != ''">$(APPVEYOR_BUILD_VERSION)</Version>
     <PackageVersion>1.0.0</PackageVersion>
     <PackageVersion Condition="'$(APPVEYOR)' == 'true' And '$(APPVEYOR_BUILD_VERSION)' != ''">$(APPVEYOR_BUILD_VERSION)</PackageVersion>
     <PackageProjectUrl>https://github.com/Jkaveri/CacheBucket</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Jkaveri/CacheBucket</RepositoryUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/jkaveri/CacheBucket/logo.png</PackageIconUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/Jkaveri/CacheBucket/master/LICENSE</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>caching, bucket, cache-bucket, redis, memory-cache</PackageTags>
     <AssemblyVersion>1.0.0</AssemblyVersion>
@@ -14,5 +17,6 @@
     <AssemblyFileVersion>1.0.0</AssemblyFileVersion>
     <AssemblyFileVersion Condition="'$(APPVEYOR)' == 'true' And '$(APPVEYOR_BUILD_VERSION)' != ''">$(APPVEYOR_BUILD_VERSION)</AssemblyFileVersion>
     <VersionSuffix Condition="'$(VersionSuffix)' != ''">$(VersionSuffix)</VersionSuffix>
+    
   </PropertyGroup>
 </Project>
