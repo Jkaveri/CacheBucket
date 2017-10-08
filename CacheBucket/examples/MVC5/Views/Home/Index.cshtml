@@ -1,0 +1,19 @@
+﻿@model WebApplication.Models.HomeViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+<div class=""row">
+    <div class="col-md-12 text-center">
+        <h1>CacheEnabled: @MvcApplication.EnableCacheBucket.ToString()</h1>
+    </div>
+</div>
+<div class="row" style="margin-top: 100px">
+    <div class="col-md-6 col-md-push-3">
+        <ul>
+            @foreach (KeyValuePair<string, string> item in Model.UserPreferences)
+            {
+                <li>@item.Key = @item.Value</li>
+            }
+        </ul>
+    </div>
+</div>

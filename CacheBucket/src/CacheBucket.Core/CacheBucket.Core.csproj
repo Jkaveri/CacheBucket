@@ -3,8 +3,6 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>CB.Core</RootNamespace>
-    <Description>Cache bucket core</Description>
-
   </PropertyGroup>
 
   <ItemGroup>
