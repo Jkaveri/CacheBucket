@@ -25,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{D4FAB949-8
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CacheBucket.Core", "src\CacheBucket.Core\CacheBucket.Core.csproj", "{DF02171A-33AB-4234-BFCE-6CD5235DE261}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CacheBucket.Redis", "src\CacheBucket.Redis\CacheBucket.Redis.csproj", "{07D2C6F7-4989-4DB0-A655-7FC114E9E292}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{DF02171A-33AB-4234-BFCE-6CD5235DE261}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF02171A-33AB-4234-BFCE-6CD5235DE261}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF02171A-33AB-4234-BFCE-6CD5235DE261}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07D2C6F7-4989-4DB0-A655-7FC114E9E292}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07D2C6F7-4989-4DB0-A655-7FC114E9E292}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07D2C6F7-4989-4DB0-A655-7FC114E9E292}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07D2C6F7-4989-4DB0-A655-7FC114E9E292}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,6 +62,7 @@ Global
 		{4BE86B94-D7ED-490E-B04A-D25BA43105E7} = {24090231-AD74-458B-820D-F5BFAE683C5A}
 		{8C2A64FC-BEE3-4AE5-9A0D-078EE63045A5} = {24090231-AD74-458B-820D-F5BFAE683C5A}
 		{DF02171A-33AB-4234-BFCE-6CD5235DE261} = {24090231-AD74-458B-820D-F5BFAE683C5A}
+		{07D2C6F7-4989-4DB0-A655-7FC114E9E292} = {24090231-AD74-458B-820D-F5BFAE683C5A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BFEA5023-4A24-492F-B5B2-F94DBC852E94}
