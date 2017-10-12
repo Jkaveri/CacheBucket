@@ -10,27 +10,46 @@ namespace CB.Core
 {
     public class CacheBucket
     {
+        [NotNull] private readonly ICacheStorage _cacheStorage;
+        [NotNull] private readonly ICacheValueConverter _converter;
+
         private readonly ConcurrentDictionary<string, CacheBucket> _innerBuckets =
             new ConcurrentDictionary<string, CacheBucket>();
+
+        [NotNull] private readonly string _name;
 
         private string _navigationName;
         private CacheBucket _parent;
 
-        public CacheBucket([NotNull] string name, ICacheStorage cacheStorage)
+        /// <summary>
+        /// Intialize cache bucket class with <see cref="DefaultCacheValueConverter"/>.
+        /// </summary>
+        public CacheBucket([NotNull] string name, [NotNull] ICacheStorage cacheStorage) : this(name, cacheStorage,
+            new DefaultCacheValueConverter())
         {
-            Name = name;
-            Storage = cacheStorage;
+        }
+
+        /// <summary>
+        /// Initialize cache bucket class.
+        /// </summary>
+        public CacheBucket([NotNull] string name, [NotNull] ICacheStorage cacheStorage,
+            [NotNull] ICacheValueConverter converter)
+        {
+            _name = name;
+            _cacheStorage = cacheStorage;
+            _converter = converter;
         }
 
         public int ChildCount => _innerBuckets.Count;
-
-        public string Name { get; }
+        public ICacheValueConverter Converter => _converter;
+        public string Name => _name;
 
         internal string NavigationName
         {
             get => _navigationName ?? (_navigationName = GenerateNavigationName());
             set => _navigationName = value;
         }
+
 
         public CacheBucket Parent
         {
@@ -42,7 +61,14 @@ namespace CB.Core
             }
         }
 
-        internal ICacheStorage Storage { get; set; }
+        public ICacheStorage Storage => _cacheStorage;
+
+        public T Get<T>(string key) where T : struct
+        {
+            var str = GetValue(key);
+
+            return Converter.To<T>(str);
+        }
 
         public string GetValue(string key)
         {
